@@ -1,0 +1,41 @@
+body {
+  background-color: lightblue;
+  font-family: verdana;
+}
+
+h1 {
+  color: red;
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  text-align: center;
+}
+
+#greeting {
+  color: blue;
+  font-size: 24px;
+}
+
+button {
+  border-radius: 0;
+  background-color: lightblue;
+  padding: 10px 24px;
+  border: 1px solid #555555;
+  font-size: 16px;
+  width: 100px;
+  margin: 8px;
+}
+
+input[type=text] {
+  border-radius: 0;
+  background-color: lightblue;
+  border: 1px solid #555555;
+  font-size: 20px;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
