@@ -1,0 +1,1 @@
+This is a repo built for my CMP-355 (Full Stack Design & Development) Course, to put all my completed exercises, assignments, and projects.
