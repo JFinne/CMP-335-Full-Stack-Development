@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="greeting-card">
+        <h1>Hello World!</h1>
+        <p>Enter your name to receive a personal greeting.</p>
+
+        <form id="name-form">
+            <label for="name">Your name</label>
+            <div class="form-row">
+                <input id="name" name="name" type="text" placeholder="e.g. Alex" autocomplete="name" required>
+                <button type="submit">Greet me</button>
+            </div>
+        </form>
+
+        <p id="greeting" class="greeting" aria-live="polite"></p>
+    </main>
+</body>
+</html>

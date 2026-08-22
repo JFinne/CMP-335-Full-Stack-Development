@@ -1,0 +1,109 @@
+:root {
+    color-scheme: light;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #17324d;
+    background: #f4efe6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #f4efe6 0%, #dce8e5 100%);
+}
+
+.greeting-card {
+    width: min(100%, 560px);
+    padding: clamp(32px, 8vw, 64px);
+    border: 1px solid #c4d3d0;
+    border-radius: 8px;
+    background: #fffdf9;
+    box-shadow: 0 18px 45px rgb(23 50 77 / 14%);
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: 0;
+}
+
+p {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+form {
+    margin-top: 32px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+input,
+button {
+    min-height: 48px;
+    border-radius: 4px;
+    font: 1rem Arial, sans-serif;
+}
+
+input {
+    min-width: 0;
+    flex: 1;
+    padding: 0 14px;
+    border: 1px solid #9fb6b3;
+    color: #17324d;
+    background: #ffffff;
+}
+
+input:focus,
+button:focus-visible {
+    outline: 3px solid #e7a83b;
+    outline-offset: 2px;
+}
+
+button {
+    padding: 0 18px;
+    border: 0;
+    color: #fffdf9;
+    background: #17324d;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #285678;
+}
+
+.greeting {
+    min-height: 32px;
+    margin-top: 28px;
+    color: #a34f2d;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}
