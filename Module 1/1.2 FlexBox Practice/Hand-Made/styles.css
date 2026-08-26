@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #121212;
+  background-image:linear-gradient(to right, black , darkgray);;
 }
 
 .header {
@@ -20,7 +20,7 @@ body {
 
 .flexbox-column {
   flex: 1 1 100%; 
-  background-color: #ababab;
+  background-color: white;
   padding: 20px;
   box-sizing: border-box;
 }
