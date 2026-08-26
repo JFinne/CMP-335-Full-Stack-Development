@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>100Thieves</title>
+        <!-- External CSS Tag -->
+        <link rel="stylesheet" href="styles.css">
+        <!-- External JS Tag -->
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="header"> 
+            <h1>100 Thieves</h1>
+            <p class="memo-text">"Take what's not given."</p>
+            <h2>Meet the Team</h2>
+        </div>
+        <div class="flex-container">
+            <div class="flexbox-column" id="w3-link">
+                <h3>A link.</h3>
+                <p>Here is a <a href="https://www.w3schools.com" target="_blank">link</a> to the W3Schools website.</p>
+            </div>
+            <div class="flexbox-column" id="trophy-image">
+                <h3>An image.</h3>
+                <img src="Media/100t_ewc_trophy.jpg" alt="Trophy Image" class="image">
+            </div>
+            <div class="flexbox-column" id="team-video">
+                <h3>A video.</h3>
+                <video controls class="video">
+                    <source src="Media/100t_meet_the_team.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="flexbox-column " id="geolocation">
+                <h3>A place.</h3>
+                <p>Click the button to get your coordinates.</p>
+                <button onclick="getLocation()">Get Location</button>
+                <p id="coordinates"></p>
+            </div>
+
+        </div>
+    </body>
+</html>

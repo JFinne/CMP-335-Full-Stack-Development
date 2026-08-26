@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A 100 Thieves inspired flexbox landing page.">
+  <title>100 Thieves | Field Notes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="eyebrow">100 THIEVES / FIELD NOTES</p>
+    <h1>Make your mark.</h1>
+    <p class="intro">A compact showcase of the people, places, and tools that keep us moving.</p>
+  </header>
+
+  <main class="column-grid">
+    <section class="feature-panel link-panel">
+      <div>
+        <p class="panel-number">01 / RESOURCE</p>
+        <h2>Learn the fundamentals.</h2>
+        <p>Build a stronger web foundation with clear examples and practical references.</p>
+      </div>
+      <a class="action-link" href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">
+        Visit W3Schools <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
+    <section class="feature-panel image-panel">
+      <div>
+        <p class="panel-number">02 / MOMENT</p>
+        <h2>Earn the trophy.</h2>
+        <img src="../Hand-Made/Media/100t_ewc_trophy.jpg" alt="100 Thieves EWC trophy">
+      </div>
+      <p class="panel-caption">Proof that the work adds up.</p>
+    </section>
+
+    <section class="feature-panel video-panel">
+      <div>
+        <p class="panel-number">03 / PEOPLE</p>
+        <h2>Meet the team.</h2>
+        <video controls preload="metadata" poster="../Hand-Made/Media/100t_ewc_trophy.jpg">
+          <source src="../Hand-Made/Media/100t_meet_the_team.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+      </div>
+      <p class="panel-caption">The crew behind the culture.</p>
+    </section>
+
+    <section class="feature-panel location-panel">
+      <div>
+        <p class="panel-number">04 / POSITION</p>
+        <h2>Find your coordinates.</h2>
+        <p>Tap the button to request your current latitude and longitude.</p>
+      </div>
+      <div class="location-output" aria-live="polite">Coordinates waiting.</div>
+      <button class="location-button" id="location-button" type="button">Get my location</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>LOS ANGELES / EST. 2017</span>
+    <span>STAY HUNGRY</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
