@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Survey</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Recruitment Survey</h1>
+    <form id="survey-form" novalidate>
+        <div>
+            <label for="username">Username*:</label> <br>
+            <input type="text" id="username" name="username" maxlength="30" required> <br>
+        </div>
+        <div>
+            <label for="rank">Rank*:</label> <br>
+            <select id="rank" name="rank" required>
+                <option value="" selected disabled>Select your rank</option>
+                <option value="iron">Iron</option>
+                <option value="bronze">Bronze</option>
+                <option value="silver">Silver</option>
+                <option value="gold">Gold</option>
+                <option value="platinum">Platinum</option>
+                <option value="diamond">Diamond</option>
+                <option value="ascendant">Ascendant</option>
+                <option value="immortal">Immortal</option>
+                <option value="radiant">Radiant</option>
+            </select> <br>
+        </div>
+        <div>
+            <label for="roster">Roster*:</label> <br>
+            <label for="varsity">Varsity Black/Orange</label>
+            <input type="radio" id="varsity_bo" name="roster" value="varsity" required> <br>
+            <label for="varsity">Varsity White (GC Roster)</label>
+            <input type="radio" id="varsity_w" name="roster" value="varsity"> <br>
+            <label for="junior">Junior Black/Orange</label>
+            <input type="radio" id="junior_bo" name="roster" value="junior"> <br>
+            <label for="junior">Junior White (GC Roster)</label>
+            <input type="radio" id="junior_w" name="roster" value="junior"> <br>
+        </div>
+        <div>
+            <label>Roles*:</label> <br>
+            <label for="duelist">Duelist</label>
+            <input type="checkbox" id="duelist" name="roles[]" value="duelist" required> <br>
+            <label for="initiator">Initiator</label>
+            <input type="checkbox" id="initiator" name="roles[]" value="initiator"> <br>
+            <label for="sentinel">Sentinel</label>
+            <input type="checkbox" id="sentinel" name="roles[]" value="sentinel"> <br>
+            <label for="controller">Controller</label>
+            <input type="checkbox" id="controller" name="roles[]" value="controller"> <br>
+            <label for="igl">IGL</label>
+            <input type="checkbox" id="igl" name="roles[]" value="igl"> <br>
+        </div>
+        <div>
+            <label for="message">Anything else you want us to know about you? (Optional)</label>
+            <textarea id="message" name="message" rows="6" placeholder="Tell us anything else we should know..."></textarea>
+        </div>
+        <div>
+            <label for="contact-permission">May we contact you on social media?*</label>
+            <input type="checkbox" id="contact-permission" name="contact-permission" value="yes" required> <br>
+        </div>
+        <input type="submit" value="Submit">
+        <p>* - Required fields for submitting the form.</p>
+    </form>
+</body>
+</html>

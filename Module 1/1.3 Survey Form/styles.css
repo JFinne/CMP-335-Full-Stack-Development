@@ -1,0 +1,127 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--black: #171717;
+	--dark-gray: #333333;
+	--gray: #bdbdbd;
+	--light-gray: #f2f2f2;
+	--orange: #f27a21;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	padding: 48px 20px;
+	color: var(--black);
+	background: var(--light-gray);
+	font-family: Arial, sans-serif;
+	font-size: 1.15rem;
+	line-height: 1.5;
+}
+
+h1 {
+	max-width: 650px;
+	margin: 0 auto 32px;
+	padding-bottom: 12px;
+	color: var(--black);
+	border-bottom: 5px solid var(--orange);
+	text-align: center;
+	font-size: 2.5rem;
+}
+
+form {
+	max-width: 650px;
+	margin: 0 auto;
+	padding: 32px;
+	background: white;
+	border: 1px solid var(--gray);
+	border-top: 8px solid var(--black);
+	box-shadow: 0 6px 18px rgb(0 0 0 / 12%);
+}
+
+form > div {
+	margin-bottom: 28px;
+	padding-bottom: 22px;
+	border-bottom: 1px solid var(--gray);
+}
+
+form > div:last-of-type {
+	margin-bottom: 28px;
+}
+
+label {
+	font-weight: 600;
+}
+
+input[type="text"],
+select,
+textarea {
+	width: 100%;
+	margin-top: 8px;
+	padding: 12px;
+	color: var(--black);
+	background: white;
+	border: 2px solid var(--gray);
+	border-radius: 3px;
+	font: inherit;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+	outline: 3px solid rgb(242 122 33 / 35%);
+	border-color: var(--orange);
+}
+
+textarea {
+	min-height: 140px;
+	resize: vertical;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	width: 1.1em;
+	height: 1.1em;
+	accent-color: var(--orange);
+}
+
+input[type="submit"] {
+	width: 100%;
+	padding: 13px;
+	color: white;
+	background: var(--orange);
+	border: 2px solid var(--dark-gray);
+	border-radius: 3px;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 700;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+	background: var(--dark-gray);
+}
+
+form > p {
+	margin: 18px 0 0;
+	color: var(--dark-gray);
+	font-size: 0.9rem;
+	font-style: italic;
+	text-align: center;
+}
+
+@media (max-width: 520px) {
+	body {
+		padding: 28px 12px;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	form {
+		padding: 24px 18px;
+	}
+}
