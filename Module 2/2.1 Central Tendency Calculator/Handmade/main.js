@@ -5,7 +5,6 @@ const highInput = document.getElementById("high");
 const setRangeBtn = document.getElementById("setRange");
 const manualInput = document.getElementById("manualInput");
 const addManualBtn = document.getElementById("addManual");
-const addRandomBtn = document.getElementById("addRandom");
 const numbersListEl = document.getElementById("numbersList");
 const meanEl = document.getElementById("mean");
 const medianEl = document.getElementById("median");
