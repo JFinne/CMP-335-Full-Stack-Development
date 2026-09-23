@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Bacon Cipher</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content="" />
+        <link rel="stylesheet" href="baconStyles2.css">
+        <script src="baconScripts2.js"></script>
+    </head>
+
+    <body>
+        <h1 class="title">Bacon Ipsum API Call Form</h1>
+
+        <div class="section">
+            <h2>User Input</h2>
+
+            <br>
+
+            <label for="paragraphDropdown">How many Paragraphs?</label>
+            <select name="paragraphs" id="paragraphDropdown">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+            </select>
+
+            <br>
+              <label for="typeDropdown">What kind of text?</label>
+              <select name="type" id="typeDropdown">
+                  <option value="all-meat">All meat</option>
+                  <option value="meat-and-filler">Meat and filler</option>
+              </select>
+            <br>
+
+            <label for="algDropdown">Which encryption algorithm?</label>
+            <select name="algorithm" id="algDropdown">
+                 <option value="1">1</option>
+                 <option value="2">2</option>
+            </select>
+
+            <br>
+
+            
+
+            <button onclick="baconIpsum()">Generate my Text</button>
+
+        </div>
+
+        <div class="section" id="rawTextHeader">
+            <h2>Raw Text:</h2>
+            <div class="listText" id="rawJson"></div>
+        </div>
+
+        <div class="section" id="splitTextHeader">
+            <h2>Split Text:</h2>
+            <div class="listText" id="splitText"></div>
+        </div>
+
+        <div class="section" id="encryptedTextHeader">
+            <h2>Encrypted Text:</h2>
+            <div class="listText" id="encryptedText"></div>
+        </div>
+
+    </body>
+</html>

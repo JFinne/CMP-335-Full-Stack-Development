@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+	--ink: #192231;
+	--muted: #697586;
+	--accent: #ee6c4d;
+	--accent-dark: #d95538;
+	--page: #17324d;
+	--panel: #ffffff;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	color: var(--ink);
+	font-family: 'DM Sans', sans-serif;
+	background: linear-gradient(135deg, #17324d 0%, #1e5270 55%, #2d7b7d 100%);
+}
+
+h1, h2, h3, .eyebrow {
+	font-family: 'Space Grotesk', sans-serif;
+}
+
+.eyebrow {
+	color: #ffb08f;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.intro,
+.results-caption {
+	color: #d5e5e9;
+}
+
+.intro {
+	max-width: 32rem;
+}
+
+.input-card,
+.result-card {
+	border-radius: 0.75rem;
+}
+
+.input-card {
+	max-width: 58rem;
+	margin-right: auto;
+	margin-left: auto;
+	background: var(--panel);
+}
+
+.form-control {
+	border-color: #d6dde5;
+}
+
+.form-control:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 0.25rem rgba(238, 108, 77, 0.2);
+}
+
+.btn-primary {
+	border-color: var(--accent);
+	background-color: var(--accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+	border-color: var(--accent-dark);
+	background-color: var(--accent-dark);
+}
+
+.choice-label {
+	display: block;
+	width: 100%;
+	padding: 0.7rem 1rem;
+	border: 1px solid #d6dde5;
+	border-radius: 0.5rem;
+	color: var(--muted);
+	cursor: pointer;
+	text-align: center;
+	transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+}
+
+.choice-label.compact {
+	width: auto;
+	min-width: 8rem;
+}
+
+.btn-check:checked + .choice-label {
+	border-color: var(--accent);
+	color: var(--accent-dark);
+	background-color: #fff1ec;
+}
+
+.choice-label:hover {
+	border-color: var(--accent);
+}
+
+.result-card {
+	border: 0;
+	background: var(--panel);
+}
+
+.result-description {
+	min-height: 3rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.result-list {
+	min-height: 4rem;
+	margin: 0.5rem 0 1.5rem;
+}
+
+.list-item {
+	padding: 0.7rem 0.85rem;
+	border-left: 3px solid var(--accent);
+	border-radius: 0.25rem;
+	background: #f4f7f8;
+	font-weight: 600;
+}
+
+@media (max-width: 575.98px) {
+	.results-caption {
+		display: none;
+	}
+}

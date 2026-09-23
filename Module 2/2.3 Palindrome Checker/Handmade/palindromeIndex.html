@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Palindrome Checker</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Compare palindrome-checking algorithms." />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link rel="stylesheet" href="palindromeStyles.css">
+    </head>
+
+    <body>
+        <main class="container py-5">
+            <header class="text-center text-white mb-5">
+                <p class="eyebrow mb-2">CMP-335 / Module 2</p>
+                <h1 class="display-4 fw-bold mb-3">Palindrome Checker</h1>
+                <p class="lead intro mx-auto mb-0">Test a word with three different algorithms.</p>
+            </header>
+
+            <section class="card border-0 shadow-lg input-card mb-5" aria-labelledby="input-heading">
+                <div class="card-body p-4 p-md-5">
+                    <h2 id="input-heading" class="h3 mb-4">Check a word</h2>
+                    <div class="mb-4">
+                        <label for="inputText" class="form-label fw-semibold">Text to check</label>
+                        <input type="text" id="inputText" class="form-control form-control-lg" placeholder="Enter text here" autocomplete="off">
+                    </div>
+
+                    <fieldset class="mb-4">
+                        <legend class="h6 fw-semibold">Choose an algorithm</legend>
+                        <div class="row g-2">
+                            <div class="col-12 col-md-4">
+                                <input class="btn-check" type="radio" id="radio1" name="algChoice" value="1">
+                                <label class="choice-label" for="radio1">Reverse text</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input class="btn-check" type="radio" id="radio2" name="algChoice" value="2">
+                                <label class="choice-label" for="radio2">Two-pointer</label>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <input class="btn-check" type="radio" id="radio3" name="algChoice" value="3">
+                                <label class="choice-label" for="radio3">Recursive</label>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="mb-4">
+                        <legend class="h6 fw-semibold">Case sensitivity</legend>
+                        <div class="d-flex gap-2">
+                            <input class="btn-check" type="radio" id="caseSensNo" name="caseSens" value="0">
+                            <label class="choice-label compact" for="caseSensNo">Ignore case</label>
+                            <input class="btn-check" type="radio" id="caseSensYes" name="caseSens" value="1">
+                            <label class="choice-label compact" for="caseSensYes">Match case</label>
+                        </div>
+                    </fieldset>
+
+                    <button onclick="textAlgorithm()" type="button" class="btn btn-primary btn-lg px-4">Check palindrome</button>
+                </div>
+            </section>
+
+            <section aria-labelledby="results-heading">
+                <div class="d-flex justify-content-between align-items-center text-white mb-3">
+                    <h2 id="results-heading" class="h3 mb-0">Results</h2>
+                    <span class="results-caption">Your checks appear below</span>
+                </div>
+                <div class="row g-4">
+                    <div class="col-12 col-md-4">
+                        <article class="card result-card h-100" id="list1header">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h3 class="h5">Reverse text</h3>
+                                <p class="result-description">Compares the text with its reverse.</p>
+                                <div class="result-list flex-grow-1" id="list1" aria-live="polite"></div>
+                                <button onclick="clearList(1)" type="button" class="btn btn-outline-secondary btn-sm align-self-start">Clear results</button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <article class="card result-card h-100" id="list2header">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h3 class="h5">Two-pointer</h3>
+                                <p class="result-description">Checks matching characters from both ends.</p>
+                                <div class="result-list flex-grow-1" id="list2" aria-live="polite"></div>
+                                <button onclick="clearList(2)" type="button" class="btn btn-outline-secondary btn-sm align-self-start">Clear results</button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <article class="card result-card h-100" id="list3header">
+                            <div class="card-body d-flex flex-column p-4">
+                                <h3 class="h5">Recursive</h3>
+                                <p class="result-description">Checks inward through recursive calls.</p>
+                                <div class="result-list flex-grow-1" id="list3" aria-live="polite"></div>
+                                <button onclick="clearList(3)" type="button" class="btn btn-outline-secondary btn-sm align-self-start">Clear results</button>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script src="palindromeScripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    </body>
+</html>
