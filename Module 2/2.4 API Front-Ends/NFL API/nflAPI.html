@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+    NFL Season Dashboard
+    ====================
+    Page structure only. The games and standings start out empty and are filled in by
+    nflAPI.js using data from ESPN's public NFL API. Elements with an id="…" are the ones
+    the JavaScript looks up and updates.
+
+    Styling is Bootstrap 5.3. Most class names here are Bootstrap utilities, for example:
+      row / col-*        Bootstrap's 12-column grid (col-lg-8 = 8 of 12 columns on large screens)
+      d-flex, gap-*      flexbox layout and spacing
+      mb-*, px-*, py-*   margin/padding (m = margin, p = padding; t/b/s/e/x/y = side; 0–5 = size)
+      d-none             hides an element (JS removes this class to show error alerts)
+    Anything custom lives in nflAPI.css.
+
+    data-bs-theme="dark" on <html> switches every Bootstrap component to its dark colors.
+    Remove it (or set it to "light") to get the light theme.
+-->
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <!-- Makes the layout scale properly on phones instead of showing a zoomed-out desktop page. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Season Dashboard</title>
+    <!-- Bootstrap CSS, Bootstrap Icons (the <i class="bi bi-…"> icons), then our own overrides.
+         Our file comes last so its rules win over Bootstrap's when they conflict. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="nflAPI.css" rel="stylesheet">
+</head>
+<body class="bg-body-tertiary">
+    <!-- Top bar -->
+    <nav class="navbar bg-black border-bottom mb-4">
+        <div class="container-fluid">
+            <span class="navbar-brand fw-bold"><i class="bi bi-trophy-fill text-warning me-2"></i>NFL Season Dashboard</span>
+            <span class="navbar-text small text-body-secondary">Data: ESPN public API</span>
+        </div>
+    </nav>
+
+    <main class="container-fluid px-lg-4">
+        <!-- ===== Controls: season, week and primetime filter ===== -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <!-- Season dropdown. Options are added by populateSeasons() in the JS. -->
+                    <div class="col-sm-6 col-md-3 col-xl-2">
+                        <label for="seasonSelect" class="form-label fw-semibold">Season</label>
+                        <select id="seasonSelect" class="form-select"></select>
+                    </div>
+                    <!-- Week dropdown with "<" / ">" buttons on each side (a Bootstrap input-group).
+                         Options are added by populateWeeks() once the season's calendar has loaded. -->
+                    <div class="col-sm-6 col-md-5 col-xl-4">
+                        <label for="weekSelect" class="form-label fw-semibold">Week</label>
+                        <div class="input-group">
+                            <!-- aria-label gives icon-only buttons a name for screen readers. -->
+                            <button id="prevWeek" class="btn btn-outline-secondary" type="button" aria-label="Previous week">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <select id="weekSelect" class="form-select"></select>
+                            <button id="nextWeek" class="btn btn-outline-secondary" type="button" aria-label="Next week">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Primetime filter. "form-switch" makes Bootstrap draw the checkbox as a toggle switch. -->
+                    <div class="col-md-4 col-xl-3">
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" id="primetimeOnly">
+                            <label class="form-check-label" for="primetimeOnly">
+                                <i class="bi bi-moon-stars-fill text-primetime"></i> Primetime games only
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Main content: games (left, 8/12 wide) and standings (right, 4/12 wide) =====
+             On screens narrower than "lg" (992px) the columns stack: games on top, standings below. -->
+        <div class="row g-4">
+            <!-- Games for the selected week -->
+            <section class="col-lg-8">
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+                    <div>
+                        <!-- e.g. "2024 · Week 5" and "Oct 2-8". Set in loadWeek(). -->
+                        <h2 id="weekTitle" class="h4 mb-0">Loading…</h2>
+                        <small id="weekDates" class="text-body-secondary"></small>
+                    </div>
+                    <!-- Count badges ("16 games", "14 final", …). Filled by renderSummary(). -->
+                    <div id="weekSummary" class="d-flex gap-2 flex-wrap"></div>
+                </div>
+                <!-- Error alert, hidden until a request fails. -->
+                <div id="gamesError" class="alert alert-danger d-none" role="alert"></div>
+                <!-- Day headings and game cards. Filled by renderGames(). -->
+                <div id="games"></div>
+            </section>
+
+            <!-- Standings for the selected season -->
+            <aside class="col-lg-4">
+                <div class="card shadow-sm standings-card">
+                    <div class="card-header bg-black d-flex justify-content-between align-items-center">
+                        <h2 class="h5 mb-0"><span id="standingsSeason"></span> Standings</h2>
+                        <!-- AFC / NFC tabs. These work with no code of our own: Bootstrap's JS sees
+                             data-bs-toggle="pill" and shows the pane whose id matches data-bs-target. -->
+                        <ul class="nav nav-pills nav-pills-sm" id="confTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active py-1 px-3" data-bs-toggle="pill" data-bs-target="#conf-AFC" type="button" role="tab">AFC</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link py-1 px-3" data-bs-toggle="pill" data-bs-target="#conf-NFC" type="button" role="tab">NFC</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="standingsError" class="alert alert-danger m-3 d-none" role="alert"></div>
+                        <!-- One pane per conference. loadStandings() fills each with four division
+                             tables; the ids (conf-AFC / conf-NFC) match the API's conference abbreviations. -->
+                        <div class="tab-content" id="standings">
+                            <div class="tab-pane fade show active" id="conf-AFC" role="tabpanel"></div>
+                            <div class="tab-pane fade" id="conf-NFC" role="tabpanel"></div>
+                        </div>
+                    </div>
+                    <!-- Key for the seed badges and the clinch letters shown after team names. -->
+                    <div class="card-footer small text-body-secondary">
+                        Badges show playoff seed. <span class="fw-semibold">z</span> = clinched #1 seed / bye,
+                        <span class="fw-semibold">y</span> = clinched division,
+                        <span class="fw-semibold">x</span> = clinched playoffs,
+                        <span class="fw-semibold">e</span> = eliminated.
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="text-center text-body-secondary small py-4">
+        CMP-335 Full-Stack Development &middot; NFL API Front-End
+    </footer>
+
+    <!-- Scripts go at the end of <body> so every element above exists before the JS runs.
+         The Bootstrap "bundle" includes Popper and powers the AFC/NFC tabs. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="nflAPI.js"></script>
+</body>
+</html>

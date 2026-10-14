@@ -1,0 +1,120 @@
+/*
+ * NFL Season Dashboard: custom styles
+ * ====================================
+ * Bootstrap 5.3 does almost all of the styling (loaded before this file in nflAPI.html).
+ * This file only adds what Bootstrap doesn't have: the primetime color, game card effects,
+ * logo sizes, and a few standings tweaks. Class names used here are added either directly
+ * in nflAPI.html or by the HTML that nflAPI.js generates.
+ *
+ * var(--bs-…) values are Bootstrap's own theme colors. Using them (instead of fixed colors)
+ * means these styles follow the dark/light theme automatically.
+ */
+
+/* ---------- Primetime color ----------
+ * Defined once as a CSS variable so every primetime element uses the same purple.
+ * Change it here to recolor them all. */
+:root {
+    --primetime: #8c5cf0;
+}
+
+/* Purple text, e.g. the moon icon next to the "Primetime games only" switch. */
+.text-primetime {
+    color: var(--primetime);
+}
+
+/* Purple badge background, e.g. "Sunday Night Football". !important is needed to
+ * override Bootstrap's own .badge background. */
+.bg-primetime {
+    background-color: var(--primetime) !important;
+    color: #fff;
+}
+
+/* ---------- Game cards ---------- */
+
+/* Smoothly animate the hover effect below. */
+.game-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Lift the card slightly and deepen its shadow on hover. */
+.game-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Purple outline on primetime games (the JS adds the "primetime" class). */
+.game-card.primetime {
+    border: 2px solid var(--primetime);
+}
+
+/* Team logos. object-fit: contain scales each logo to fit the box without stretching,
+ * since logos come in different shapes. */
+.team-logo {             /* on game cards */
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.team-logo-sm {          /* in the standings tables */
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* The big score number on the right of each team row.
+ * tabular-nums gives every digit the same width, so scores line up vertically. */
+.team-row .score {
+    font-size: 1.35rem;
+    font-weight: 700;
+    min-width: 2.5rem;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+/* After a final: fade the losing team and bold the winner's name.
+ * renderTeamRow() in the JS decides which class a row gets. */
+.team-row.loser {
+    opacity: 0.55;
+}
+
+.team-row.winner .team-name {
+    font-weight: 700;
+}
+
+/* Underline for the day headings between groups of games ("SUNDAY, SEPTEMBER 7"). */
+.day-heading {
+    border-bottom: 2px solid var(--bs-border-color);
+    padding-bottom: 0.25rem;
+}
+
+/* ---------- Standings ---------- */
+
+/* On large screens (992px+, where standings sit beside the games) the standings card
+ * "sticks" 1rem from the top of the window while you scroll through the games.
+ * On smaller screens it stacks below the games, so sticky isn't needed. */
+@media (min-width: 992px) {
+    .standings-card {
+        position: sticky;
+        top: 1rem;
+    }
+}
+
+/* Slightly smaller text so the 7 columns fit, with equal-width digits so numbers line up. */
+.standings-card .table {
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The "AFC EAST" style heading row at the top of each division table. */
+.division-heading {
+    background-color: var(--bs-secondary-bg);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Keeps the playoff seed badges the same width whether the seed is 1 or 7. */
+.seed-badge {
+    min-width: 1.5rem;
+}
