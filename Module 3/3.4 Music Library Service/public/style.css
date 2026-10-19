@@ -1,0 +1,155 @@
+/* Basic page setup */
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: #f5f5f7;
+    color: #222;
+}
+
+header {
+    background: #2b2d42;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Keeps content centered and readable on wide screens */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Form: fields wrap onto new lines on small screens (flexbox) */
+#add-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 180px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: #2b2d42;
+    color: #fff;
+}
+
+button:hover,
+button:focus-visible {
+    background: #44476a;
+}
+
+/* Delete buttons are red so they stand out as destructive */
+.delete-btn {
+    background: #b00020;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.delete-btn:hover,
+.delete-btn:focus-visible {
+    background: #d32f2f;
+}
+
+/* Edit buttons are blue to set them apart from Delete */
+.edit-btn {
+    background: #1d5fa8;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.edit-btn:hover,
+.edit-btn:focus-visible {
+    background: #2a74c4;
+}
+
+/* Cancel button (shown only while editing) is outlined, not filled */
+.secondary-btn {
+    background: #fff;
+    color: #2b2d42;
+    border: 1px solid #2b2d42;
+}
+
+.secondary-btn:hover,
+.secondary-btn:focus-visible {
+    background: #edf0f5;
+}
+
+/* Keeps the Edit and Delete buttons side by side with a small gap */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Highlights the table row whose piece is loaded in the form */
+tr.editing {
+    background: #fff6d6;
+}
+
+/* Status message colors (set by script.js) */
+#message.success { color: #1b7f3b; }
+#message.error   { color: #b00020; }
+
+/* Table: scrolls sideways on narrow screens instead of breaking the layout */
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.6rem;
+    border-bottom: 1px solid #ddd;
+}
+
+thead th {
+    background: #edf0f5;
+}
+
+/* Hides text visually but keeps it available to screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

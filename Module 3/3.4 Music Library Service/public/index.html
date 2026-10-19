@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Music Library</h1>
+    </header>
+
+    <main>
+        <!-- Form for adding a new piece OR editing an existing one.
+             script.js intercepts the submit and sends the data to
+             POST /api/pieces (add) or PUT /api/pieces/:id (edit)
+             instead of reloading the page. -->
+        <section aria-labelledby="add-heading">
+            <h2 id="add-heading">Add a Piece</h2>
+            <form id="add-form">
+                <div class="field">
+                    <label for="title">Title / Movement</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="field">
+                    <label for="composer">Composer</label>
+                    <input type="text" id="composer" name="composer" placeholder="Last, First" required>
+                </div>
+                <div class="field">
+                    <label for="dateComposed">Date Composed</label>
+                    <!-- Text instead of type="date" so a year by itself (e.g. 1880) is allowed. -->
+                    <input type="text" id="dateComposed" name="dateComposed" placeholder="YYYY or YYYY-MM-DD" required>
+                </div>
+                <div class="field">
+                    <label for="ensemble">Ensemble</label>
+                    <input type="text" id="ensemble" name="ensemble" placeholder="e.g. Orchestra" required>
+                </div>
+                <button type="submit" id="submit-btn">Add Piece</button>
+                <!-- Only shown while editing; lets the user back out without saving. -->
+                <button type="button" id="cancel-btn" class="secondary-btn" hidden>Cancel</button>
+            </form>
+            <!-- aria-live lets screen readers announce success/error messages. -->
+            <p id="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- The list of pieces. The table body is filled in by script.js. -->
+        <section aria-labelledby="list-heading">
+            <h2 id="list-heading">Library</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Composer</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Ensemble</th>
+                            <th scope="col"><span class="visually-hidden">Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="piece-list"></tbody>
+                </table>
+            </div>
+            <p id="empty-note" hidden>The library is empty. Add a piece above.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
