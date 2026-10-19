@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //
 // Copy the template below for each piece, fill it in, and give each one the next id.
 const pieces = [
-    { id: 1, title: 'Danse Macabre', composer: 'Saint-Saëns, Camille', dateComposed: '1880', ensemble: 'Full Orchestra'},
+    { id: 1, title: 'Danse Macabre', composer: 'Saint-Saëns, Camille', dateComposed: '1874', ensemble: 'Full Orchestra'},
     { id: 2, title: 'The Seal Lullaby', composer: 'Whitacre, Eric', dateComposed: '2008', ensemble: 'Vocal Choir'},
     { id: 3, title: 'The Seal Lullaby', composer: 'Whitacre, Eric', dateComposed: '2008', ensemble: 'Wind Band'},
     { id: 4, title: 'Deciduous', composer: 'Cuong, Viet', dateComposed: '2023', ensemble: 'Wind Band'},
